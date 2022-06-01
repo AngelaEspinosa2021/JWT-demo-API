@@ -8,14 +8,21 @@ import reactor.core.publisher.Mono;
 
 public class UserServiceImpl implements UserService{
 
+    @Autowired
+    private UserRepository userRepo;
 
     @Override
     public Flux<User> findAll() {
-        return null;
+        return userRepo.findAll();
     }
 
     @Override
     public Mono<User> save(User user) {
-        return null;
+        return userRepo.save(user);
+    }
+
+    @Override
+    public Mono<User> findById(Integer id) {
+        return userRepo.findById(id);
     }
 }
