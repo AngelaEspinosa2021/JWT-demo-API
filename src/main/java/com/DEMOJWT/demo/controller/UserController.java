@@ -19,11 +19,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService service;
+
+    @GetMapping("/users")
+    public Mono<ResponseEntity<Flux<User>>> listarUsuarios(){
+        return Mono.just(ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(service.findAll()));
+    }
 
     @PostMapping("/registrar")
     public Mono<ResponseEntity<User>> crearUsuario(User user){
@@ -41,8 +47,7 @@ public class UserController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-/*
-    @PostMapping("user")
+    @PostMapping("/user")
     public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 
         String token = getJWTToken(username);
@@ -72,5 +77,5 @@ public class UserController {
                         secretKey.getBytes()).compact();
 
         return "Valido " + token;
-    }*/
+    }
 }

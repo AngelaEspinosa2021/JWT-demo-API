@@ -17,7 +17,6 @@ public class DemoApplication {
 
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
 	@EnableWebSecurity
 	@Configuration
 	class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,6 +30,4 @@ public class DemoApplication {
 					.anyRequest().authenticated();
 		}
 	}
-
-
 }
