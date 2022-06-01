@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
-    private Integer userId;
+    private Integer id;
 
     @NotNull
     private String user;
