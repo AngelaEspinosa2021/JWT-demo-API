@@ -11,5 +11,5 @@ public interface UserService {
 
     public Mono<User> save(User user);
 
-    public Mono<User> findById(Integer id);
+    public Mono<User> findById (String id);
 }

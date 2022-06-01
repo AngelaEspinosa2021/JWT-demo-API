@@ -3,9 +3,11 @@ package com.DEMOJWT.demo.service;
 import com.DEMOJWT.demo.dto.User;
 import com.DEMOJWT.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -22,7 +24,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Mono<User> findById(Integer id) {
+    public Mono<User> findById(String id) {
         return userRepo.findById(id);
     }
+
 }

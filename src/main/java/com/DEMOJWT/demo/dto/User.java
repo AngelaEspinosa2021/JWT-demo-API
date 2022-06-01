@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 
     @Id
-    private Integer id;
+    private String id;
 
     @NotNull
     private String user;
@@ -18,6 +18,17 @@ public class User {
     @NotNull
     private String pwd;
     private String token;
+
+    public User() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUser() {
         return user;
