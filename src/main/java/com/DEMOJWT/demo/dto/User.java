@@ -1,7 +1,21 @@
 package com.DEMOJWT.demo.dto;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Document(collection = "users")
 public class User {
+
+    @Id
+    private Integer userId;
+
+    @NotNull
     private String user;
+
+    @NotNull
     private String pwd;
     private String token;
 
