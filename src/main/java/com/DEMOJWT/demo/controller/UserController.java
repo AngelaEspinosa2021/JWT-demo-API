@@ -5,15 +5,10 @@ import com.DEMOJWT.demo.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
-import java.net.URI;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,38 +19,13 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping("/users")
-    public Mono<ResponseEntity<Flux<User>>> listarUsuarios(){
-        return Mono.just(ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(service.findAll()));
-    }
-
-    @PostMapping("/registrar")
-    public Mono<ResponseEntity<User>> crearUsuario(User user){
-        return service.save(user)
-                .map(element -> ResponseEntity.created(URI.create("/users".concat(element.getId())))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .body(element));
-    }
-
-    @GetMapping("/{id}")
-    public Mono<ResponseEntity<User>> buscarUsuario(@PathVariable String id){
-        return service.findById(id).map(element -> ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(element))
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping("/user")
+    @PostMapping("user")
     public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 
         String token = getJWTToken(username);
-        User user = new User();
-        user.setUser(username);
-        user.setToken(token);
-        return user;
+        service.crear(new User(username,pwd, token ));
 
+        return service.obtenerPorUser(username);
     }
 
     private String getJWTToken(String username) {
