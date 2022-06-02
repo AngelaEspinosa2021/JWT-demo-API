@@ -28,4 +28,10 @@ public class UserServiceImpl implements UserService{
         return userRepo.findById(id);
     }
 
+    @Override
+    public Mono<User> findByUser(String user) {
+        return userRepo.findByUser(user);
+    }
+
+
 }

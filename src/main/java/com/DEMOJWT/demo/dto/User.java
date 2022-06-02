@@ -12,14 +12,18 @@ public class User {
     @Id
     private String id;
 
-    @NotNull
     private String user;
 
-    @NotNull
     private String pwd;
     private String token;
 
     public User() {
+    }
+
+    public User(String user, String pwd, String token) {
+        this.user = user;
+        this.pwd = pwd;
+        this.token = token;
     }
 
     public String getId() {
