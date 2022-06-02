@@ -15,3 +15,4 @@ Imagen de la Data despues de la solicitud del token:
 ![image](https://user-images.githubusercontent.com/82293975/171555671-18d4e8f2-e011-49f9-b180-1a619b66f367.png)
 
 Se creó la rama JWT-Reactivo donde se aplica la reactividad al repositorio
+![image](https://user-images.githubusercontent.com/90021252/171659778-0fe5a441-6cea-456f-80f0-bc272de7855b.png)
